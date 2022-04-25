@@ -1,0 +1,1 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/9od381n23nibf4jn?svg=true)](https://ci.appveyor.com/project/demi87/aqa2-3-patterns)
