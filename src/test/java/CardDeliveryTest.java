@@ -16,24 +16,14 @@ import static java.awt.SystemColor.info;
 
 public class CardDeliveryTest {
 
-    private static Faker faker;
-
-    @BeforeAll
-    static void setUpAll() {faker = new Faker (new Locale("ru"));
-    }
-
-    String generateDate(int days) {
-        return LocalDate.now().plusDays(days).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-    }
-
     @Test
     public void shouldSuccessfulPlanAndReplanMeeting() {
         open("http://localhost:9999");
         var info = DataGenerator.Registration.generateInfo("ru");
         var daysToAddForFirstMeeting = 4;
-        var firstMeetingDate = generateDate(daysToAddForFirstMeeting);
+        var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
         var daysToAddForSecondMeeting = 7;
-        var secondMeetingDate = generateDate(daysToAddForSecondMeeting);
+        var secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
         $("[data-test-id='city'] input").setValue(info.getCity());
         $("[data-test-id='date'] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.BACK_SPACE);
         $("[data-test-id='date'] input").setValue(firstMeetingDate);
